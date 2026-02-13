@@ -1,0 +1,193 @@
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patel Computer Class</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+html{scroll-behavior:smooth;}
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#1f4037,#99f2c8);
+}
+
+/* Header */
+header{
+text-align:center;
+padding:25px;
+background:#0f2027;
+color:white;
+box-shadow:0 0 20px #00f2ff;
+}
+
+/* Nav */
+nav{
+background:black;
+padding:12px;
+text-align:center;
+}
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+}
+nav a:hover{color:#00f2ff;}
+
+/* Slider */
+.slider img{
+width:100%;
+height:400px;
+object-fit:cover;
+}
+
+/* Section */
+.section{
+padding:50px;
+text-align:center;
+animation:fadeIn 1s ease-in;
+}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* Box */
+.box{
+background:white;
+padding:25px;
+width:85%;
+margin:auto;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Courses */
+.course{
+display:inline-block;
+background:#0f2027;
+color:white;
+padding:20px;
+margin:15px;
+width:220px;
+border-radius:15px;
+box-shadow:0 5px 15px black;
+transition:0.3s;
+}
+.course:hover{transform:scale(1.05);}
+
+/* Button */
+button{
+padding:10px 25px;
+border:none;
+border-radius:25px;
+background:#00f2ff;
+cursor:pointer;
+transition:0.3s;
+}
+button:hover{
+background:black;
+color:white;
+transform:scale(1.1);
+}
+
+/* WhatsApp */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:28px;
+padding:15px;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 5px 15px black;
+}
+
+/* Footer */
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Patel Computer Class</h1>
+<p>Learn Today – Lead Tomorrow</p>
+</header>
+
+<nav>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#courses">Courses</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="slider">
+<img src="https://via.placeholder.com/1200x400/0f2027/ffffff?text=Patel+Computer+Class" id="slide">
+</div>
+
+<div class="section">
+<h2>Welcome to Patel Computer Class</h2>
+<p>Best Computer Training Institute in Bihar</p>
+<button onclick="window.location.href='https://wa.me/918789630580'">
+Join Now
+</button>
+</div>
+
+<div class="section" id="about">
+<div class="box">
+<h2>About Us</h2>
+<p>We provide MS Office, DCA, ADCA, Tally + GST and Basic Computer courses.</p>
+</div>
+</div>
+
+<div class="section" id="courses">
+<h2>Our Courses</h2>
+<div class="course">MS Office</div>
+<div class="course">DCA</div>
+<div class="course">ADCA</div>
+<div class="course">Tally + GST</div>
+<div class="course">Basic Computer</div>
+</div>
+
+<div class="section" id="contact">
+<div class="box">
+<h2>Contact Us</h2>
+<p>📍 Begusarai, Bihar</p>
+<p>📞 8789630580</p>
+</div>
+</div>
+
+<footer>
+© 2026 Patel Computer Class | All Rights Reserved
+</footer>
+
+<a href="https://wa.me/918789630580" class="whatsapp">💬</a>
+
+<script>
+var images=[
+"https://via.placeholder.com/1200x400/0f2027/ffffff?text=Patel+Computer+Class",
+"https://via.placeholder.com/1200x400/1f4037/ffffff?text=Best+Institute",
+"https://via.placeholder.com/1200x400/000000/ffffff?text=Join+Today"
+];
+var i=0;
+function slideShow(){
+document.getElementById("slide").src=images[i];
+i++;
+if(i==images.length){i=0;}
+setTimeout(slideShow,3000);
+}
+slideShow();
+</script>
+
+</body>
+</html>
