@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+}
+header{
+    background:#203a43;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+.container{
+    padding:20px;
+}
+button{
+    padding:8px 15px;
+    border:none;
+    background:red;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+.card{
+    background:#f4f4f4;
+    padding:20px;
+    margin:15px 0;
+    border-radius:10px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h2>Admin Dashboard</h2>
+    <button onclick="logout()">Logout</button>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h3>Welcome Admin 👋</h3>
+        <p>This is your control panel.</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Admissions</h3>
+        <p>Here you can manage student data.</p>
+    </div>
+</div>
+
+<script>
+// अगर login नहीं किया तो dashboard open नहीं होगा
+if(localStorage.getItem("adminLogin") !== "true"){
+    window.location.href="admin.html";
+}
+
+function logout(){
+    localStorage.removeItem("adminLogin");
+    window.location.href="admin.html";
+}
+</script>
+
+</body>
+</html>
