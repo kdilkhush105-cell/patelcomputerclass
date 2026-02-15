@@ -1,54 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
-</head>
+    <title>Admin Login - Patel Computer Class</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4e73df, #1cc88a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
+        .login-box {
+            background: white;
+            padding: 30px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            background: #4e73df;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #2e59d9;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .dashboard {
+            display: none;
+            text-align: center;
+        }
+
+        .logout {
+            background: red;
+            margin-top: 15px;
+        }
+    </style>
+</head>
 <body>
 
-<h2>Admin Login</h2>
+<div class="login-box" id="loginBox">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Enter Username">
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <div class="error" id="errorMsg"></div>
+</div>
 
-<input type="password" id="pass" placeholder="Password">
-<button onclick="login()">Login</button>
-
-<div id="data" style="display:none">
-<h3>Student Data</h3>
-<button onclick="load()">Show Students</button>
-<div id="list"></div>
+<div class="login-box dashboard" id="dashboard">
+    <h2>Welcome Admin 🎉</h2>
+    <p>Patel Computer Class Dashboard</p>
+    <button onclick="logout()" class="logout">Logout</button>
 </div>
 
 <script>
+    function login() {
+        var user = document.getElementById("username").value;
+        var pass = document.getElementById("password").value;
 
-function login(){
+        // Fixed Login Credentials
+        if (user === "admin" && pass === "1234") {
+            document.getElementById("loginBox").style.display = "none";
+            document.getElementById("dashboard").style.display = "block";
+        } else {
+            document.getElementById("errorMsg").innerHTML = "Invalid Username or Password!";
+        }
+    }
 
-if(document.getElementById("pass").value=="1234"){
-
-document.getElementById("data").style.display="block";
-
-}else{
-
-alert("Wrong Password");
-
-}
-
-}
-
-function load(){
-
-let students=JSON.parse(localStorage.getItem("students"))||[];
-
-let html="";
-
-students.forEach(s=>{
-
-html+=s.name+" - "+s.course+" - "+s.mobile+"<br>";
-
-});
-
-document.getElementById("list").innerHTML=html;
-
-}
-
+    function logout() {
+        document.getElementById("dashboard").style.display = "none";
+        document.getElementById("loginBox").style.display = "block";
+    }
 </script>
 
 </body>
