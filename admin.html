@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+</head>
+
+<body>
+
+<h2>Admin Login</h2>
+
+<input type="password" id="pass" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<div id="data" style="display:none">
+<h3>Student Data</h3>
+<button onclick="load()">Show Students</button>
+<div id="list"></div>
+</div>
+
+<script>
+
+function login(){
+
+if(document.getElementById("pass").value=="1234"){
+
+document.getElementById("data").style.display="block";
+
+}else{
+
+alert("Wrong Password");
+
+}
+
+}
+
+function load(){
+
+let students=JSON.parse(localStorage.getItem("students"))||[];
+
+let html="";
+
+students.forEach(s=>{
+
+html+=s.name+" - "+s.course+" - "+s.mobile+"<br>";
+
+});
+
+document.getElementById("list").innerHTML=html;
+
+}
+
+</script>
+
+</body>
+</html>
