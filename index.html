@@ -2,23 +2,56 @@
 <html>
 <head>
 <title>Patel Computer Class</title>
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<style>
 body{
-font-family: Arial;
 margin:0;
-background:#f2f2f2;
+font-family:Arial;
+background:#f4f6f9;
 }
 
 header{
-background:#0a5;
+background:#0f2027;
 color:white;
-padding:15px;
+text-align:center;
+padding:20px;
+}
+
+nav{
+background:black;
 text-align:center;
 }
 
-.container{
+nav a{
+color:white;
+padding:15px 20px;
+display:inline-block;
+text-decoration:none;
+font-size:16px;
+}
+
+nav a:hover{
+background:#00c6ff;
+}
+
+section{
+display:none;
+padding:30px;
+text-align:center;
+}
+
+.active{
+display:block;
+}
+
+.form-box{
+background:white;
+max-width:400px;
+margin:auto;
 padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 input,select,textarea{
@@ -27,59 +60,76 @@ padding:10px;
 margin:8px 0;
 border-radius:5px;
 border:1px solid #ccc;
+font-size:14px;
 }
 
 button{
-padding:10px;
-background:#007bff;
+width:100%;
+padding:12px;
+background:linear-gradient(to right,#00c6ff,#0072ff);
 color:white;
 border:none;
-border-radius:5px;
+border-radius:20px;
 cursor:pointer;
-margin-top:10px;
+font-size:16px;
 }
 
 button:hover{
-background:#0056b3;
+opacity:0.9;
 }
 
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
+.course-box{
+background:white;
+max-width:300px;
+margin:10px auto;
+padding:15px;
+border-radius:8px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
-
-table,th,td{
-border:1px solid #999;
-}
-
-th,td{
-padding:8px;
-text-align:center;
-}
-
-.hidden{
-display:none;
-}
-
 </style>
 </head>
+
 <body>
 
 <header>
 <h2>Patel Computer Class</h2>
+<p>Learn Today – Lead Tomorrow</p>
 </header>
 
-<div class="container">
+<nav>
+<a href="#" onclick="showSection('home')">Home</a>
+<a href="#" onclick="showSection('courses')">Courses</a>
+<a href="#" onclick="showSection('admission')">Admission</a>
+<a href="#" onclick="showSection('admin')">Admin Login</a>
+</nav>
 
-<!-- STUDENT SECTION -->
+<!-- HOME -->
+<section id="home" class="active">
+<h3>Welcome To Patel Computer Class</h3>
+<p>Best Computer Training Institute</p>
+</section>
 
+<!-- COURSES -->
+<section id="courses">
+<h3>Our Courses</h3>
+
+<div class="course-box">KYP</div>
+<div class="course-box">ADCA</div>
+<div class="course-box">DCA</div>
+<div class="course-box">Tally</div>
+
+</section>
+
+<!-- ADMISSION -->
+<section id="admission">
 <h3>Online Admission Form</h3>
 
-<input type="text" id="name" placeholder="Student Name">
-<input type="text" id="father" placeholder="Father Name">
+<div class="form-box">
 
-<select id="course">
+<input type="text" placeholder="Student Name" required>
+<input type="text" placeholder="Father Name" required>
+
+<select required>
 <option value="">Select Course</option>
 <option>KYP</option>
 <option>ADCA</option>
@@ -87,181 +137,37 @@ display:none;
 <option>Tally</option>
 </select>
 
-<input type="text" id="mobile" placeholder="Mobile Number">
-<textarea id="address" placeholder="Address"></textarea>
+<input type="text" placeholder="Mobile Number" required>
+<textarea placeholder="Address"></textarea>
 
-<button onclick="saveStudent()">Save Admission</button>
+<button onclick="alert('Admission Submitted Successfully')">
+Save Admission
+</button>
 
-<hr>
+</div>
+</section>
 
 <!-- ADMIN LOGIN -->
-
+<section id="admin">
 <h3>Admin Login</h3>
 
-<input type="text" id="adminUser" placeholder="Username">
-<input type="password" id="adminPass" placeholder="Password">
+<div class="form-box">
+<input type="text" placeholder="Username">
+<input type="password" placeholder="Password">
 <button onclick="adminLogin()">Login</button>
-
-<!-- DASHBOARD -->
-
-<div id="dashboard" class="hidden">
-<h3>Admin Dashboard</h3>
-
-<table id="studentTable">
-<tr>
-<th>ID</th>
-<th>Name</th>
-<th>Course</th>
-<th>Mobile</th>
-<th>Action</th>
-</tr>
-</table>
-
-<button onclick="logout()">Logout</button>
 </div>
 
-</div>
+</section>
 
 <script>
-
-// SAVE STUDENT
-
-function saveStudent(){
-
-let name = document.getElementById("name").value;
-let father = document.getElementById("father").value;
-let course = document.getElementById("course").value;
-let mobile = document.getElementById("mobile").value;
-let address = document.getElementById("address").value;
-
-if(name=="" || course==""){
-alert("Fill Required Fields");
-return;
+function showSection(id){
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
-
-let year = new Date().getFullYear();
-let count = localStorage.getItem("count");
-
-if(count==null){
-count=1;
-}else{
-count=parseInt(count)+1;
-}
-
-localStorage.setItem("count",count);
-
-let studentID = "PCC"+year+("000"+count).slice(-3);
-
-let student = {
-id:studentID,
-name:name,
-father:father,
-course:course,
-mobile:mobile,
-address:address
-};
-
-let students = JSON.parse(localStorage.getItem("students")) || [];
-students.push(student);
-
-localStorage.setItem("students",JSON.stringify(students));
-
-alert("Admission Successful\nStudent ID: "+studentID);
-
-document.getElementById("name").value="";
-document.getElementById("father").value="";
-document.getElementById("course").value="";
-document.getElementById("mobile").value="";
-document.getElementById("address").value="";
-
-}
-
-// ADMIN LOGIN
 
 function adminLogin(){
-
-let user = document.getElementById("adminUser").value;
-let pass = document.getElementById("adminPass").value;
-
-if(user=="admin" && pass=="1234"){
-document.getElementById("dashboard").classList.remove("hidden");
-loadStudents();
-}else{
-alert("Wrong Login");
+alert("Admin Login System Coming Soon");
 }
-
-}
-
-// LOAD STUDENTS
-
-function loadStudents(){
-
-let students = JSON.parse(localStorage.getItem("students")) || [];
-let table = document.getElementById("studentTable");
-
-table.innerHTML = `
-<tr>
-<th>ID</th>
-<th>Name</th>
-<th>Course</th>
-<th>Mobile</th>
-<th>Action</th>
-</tr>
-`;
-
-students.forEach((s,index)=>{
-
-table.innerHTML += `
-<tr>
-<td>${s.id}</td>
-<td>${s.name}</td>
-<td>${s.course}</td>
-<td>${s.mobile}</td>
-<td>
-<button onclick="editStudent(${index})">Edit</button>
-<button onclick="deleteStudent(${index})">Delete</button>
-</td>
-</tr>
-`;
-
-});
-
-}
-
-// DELETE
-
-function deleteStudent(index){
-
-let students = JSON.parse(localStorage.getItem("students"));
-students.splice(index,1);
-localStorage.setItem("students",JSON.stringify(students));
-loadStudents();
-
-}
-
-// EDIT
-
-function editStudent(index){
-
-let students = JSON.parse(localStorage.getItem("students"));
-let s = students[index];
-
-document.getElementById("name").value = s.name;
-document.getElementById("father").value = s.father;
-document.getElementById("course").value = s.course;
-document.getElementById("mobile").value = s.mobile;
-document.getElementById("address").value = s.address;
-
-deleteStudent(index);
-
-}
-
-// LOGOUT
-
-function logout(){
-document.getElementById("dashboard").classList.add("hidden");
-}
-
 </script>
 
 </body>
