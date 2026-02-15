@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Admin Login - Patel Computer Class</title>
+
     <style>
         body {
             margin: 0;
@@ -16,15 +17,10 @@
         .login-box {
             background: white;
             padding: 30px;
-            width: 300px;
+            width: 320px;
             border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             text-align: center;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
         }
 
         input {
@@ -43,7 +39,6 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
         }
 
         button:hover {
@@ -56,8 +51,42 @@
             margin-top: 10px;
         }
 
+        /* Dashboard Layout */
+
         .dashboard {
             display: none;
+            width: 90%;
+            height: 80vh;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left-panel {
+            width: 30%;
+        }
+
+        .right-panel {
+            width: 65%;
+            background: #f8f9fc;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 8px;
             text-align: center;
         }
 
@@ -65,15 +94,60 @@
             background: red;
             margin-top: 15px;
         }
+
     </style>
 </head>
-    <script>
 
-// पेज खुलते ही चेक करेगा
+<body>
+
+    <!-- Login Box -->
+    <div class="login-box" id="loginBox">
+        <h2>Admin Login</h2>
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+        <div class="error" id="errorMsg"></div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+
+        <div class="left-panel">
+            <h2>Welcome Admin 🎉</h2>
+            <p>Patel Computer Class Dashboard</p>
+            <button onclick="logout()" class="logout">Logout</button>
+        </div>
+
+        <div class="right-panel">
+            <h3>Student Details</h3>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Mobile</th>
+                </tr>
+                <tr>
+                    <td>Rahul</td>
+                    <td>CCC</td>
+                    <td>9876543210</td>
+                </tr>
+                <tr>
+                    <td>Priya</td>
+                    <td>DCA</td>
+                    <td>9123456780</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+<script>
+
 window.onload = function() {
     if(localStorage.getItem("isLoggedIn") === "true") {
         document.getElementById("loginBox").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("dashboard").style.display = "flex";
     }
 };
 
@@ -86,7 +160,7 @@ function login() {
         localStorage.setItem("isLoggedIn", "true");
 
         document.getElementById("loginBox").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("dashboard").style.display = "flex";
     } 
     else {
         document.getElementById("errorMsg").innerText = "गलत यूज़रनेम या पासवर्ड";
@@ -95,43 +169,11 @@ function login() {
 
 function logout() {
     localStorage.removeItem("isLoggedIn");
-
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("loginBox").style.display = "block";
 }
 
-    </script>
-<body>
-
-<div class="login-box" id="loginBox">
-    <h2>Admin Login</h2>
-    <input type="text" id="username" placeholder="Enter Username">
-    <input type="password" id="password" placeholder="Enter Password">
-    <button onclick="login()">Login</button>
-    <div class="error" id="errorMsg"></div>
-</div>
-
-<div class="login-box dashboard" id="dashboard">
-    <h2>Welcome Admin 🎉</h2>
-    <p>Patel Computer Class Dashboard</p>
-    <button onclick="logout()" class="logout">Logout</button>
-</div>
-
-<script>
-function login() {
-    var user = document.getElementById("username").value;
-    var pass = document.getElementById("password").value;
-
-    if(user === "admin" && pass === "1234") {
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
-    } else {
-        document.getElementById("errorMsg").innerText = "गलत यूज़रनेम या पासवर्ड";
-    }
-}
-
-function logout() {
-    document.getElementById("dashboard").style.display = "none";
-    document.getElementById("loginBox").style.display = "block";
-}
 </script>
+
+</body>
+</html>flex";
