@@ -20,8 +20,65 @@ background:#0f2027;
 color:white;
 box-shadow:0 0 20px #00f2ff;
 }
+header img {
+display:block;
+margin:0 auto 10px;
+}
+  /* Nav */
+nav{
+background:black;
+padding:12px;
+text-align:center;
+}
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+}
+nav a:hover{
+color:#00f2ff;
+}
 
-/* Nav */
+/* Form Box */
+.box{
+background:white;
+max-width:400px;
+margin:30px auto;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Inputs */
+form input,
+form textarea{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+form input:focus,
+form textarea:focus{
+border-color:#00c6ff;
+outline:none;
+}
+
+/* Button */
+button{
+width:100%;
+padding:12px;
+background:linear-gradient(to right,#00c6ff,#0072ff);
+border:none;
+border-radius:25px;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
+}
+</style>
   <section class="section" id="admission">
   <div class="box">
     <h2>Online Admission Form</h2>
@@ -52,11 +109,7 @@ box-shadow:0 0 20px #00f2ff;
 
   </div>
 </section>
-nav{
-background:black;
-padding:12px;
-text-align:center;
-}
+
 nav a{
 color:white;
 margin:15px;
