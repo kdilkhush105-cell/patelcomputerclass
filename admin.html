@@ -67,6 +67,40 @@
         }
     </style>
 </head>
+    <script>
+
+// पेज खुलते ही चेक करेगा
+window.onload = function() {
+    if(localStorage.getItem("isLoggedIn") === "true") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+    }
+};
+
+function login() {
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+
+    if(user === "admin" && pass === "1234") {
+
+        localStorage.setItem("isLoggedIn", "true");
+
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+    } 
+    else {
+        document.getElementById("errorMsg").innerText = "गलत यूज़रनेम या पासवर्ड";
+    }
+}
+
+function logout() {
+    localStorage.removeItem("isLoggedIn");
+
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("loginBox").style.display = "block";
+}
+
+    </script>
 <body>
 
 <div class="login-box" id="loginBox">
