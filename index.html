@@ -22,6 +22,36 @@ box-shadow:0 0 20px #00f2ff;
 }
 
 /* Nav */
+  <section class="section" id="admission">
+  <div class="box">
+    <h2>Online Admission Form</h2>
+
+    <form id="admissionForm">
+
+      <input type="text" id="name" placeholder="Student Name" required><br><br>
+
+      <input type="text" id="father" placeholder="Father Name" required><br><br>
+
+      <input type="date" id="dob" required><br><br>
+
+      <input type="text" id="course" placeholder="Course Name" required><br><br>
+
+      <input type="text" id="mobile" placeholder="Mobile Number" required><br><br>
+
+      <textarea id="address" placeholder="Address" required></textarea><br><br>
+
+      <button type="submit">Save Admission</button>
+
+    </form>
+
+    <br>
+
+    <button onclick="downloadData()">Download Student Data</button>
+
+    <p id="msg"></p>
+
+  </div>
+</section>
 nav{
 background:black;
 padding:12px;
@@ -116,7 +146,54 @@ padding:15px;
 </head>
 
 <body>
+<script>
 
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+document.getElementById("admissionForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let student = {
+name: document.getElementById("name").value,
+father: document.getElementById("father").value,
+dob: document.getElementById("dob").value,
+course: document.getElementById("course").value,
+mobile: document.getElementById("mobile").value,
+address: document.getElementById("address").value
+};
+
+students.push(student);
+
+localStorage.setItem("students", JSON.stringify(students));
+
+document.getElementById("msg").innerHTML = "✅ Admission Saved Successfully";
+
+document.getElementById("admissionForm").reset();
+
+});
+
+function downloadData(){
+
+let data = "Name,Father,DOB,Course,Mobile,Address\n";
+
+students.forEach(function(s){
+data += s.name+","+s.father+","+s.dob+","+s.course+","+s.mobile+","+s.address+"\n";
+});
+
+let file = new Blob([data], {type:"text/csv"});
+
+let a = document.createElement("a");
+
+a.href = URL.createObjectURL(file);
+
+a.download = "students.csv";
+
+a.click();
+
+}
+
+  </script>
 <header>
 <h1>Patel Computer Class</h1>
 <p>Learn Today – Lead Tomorrow</p>
