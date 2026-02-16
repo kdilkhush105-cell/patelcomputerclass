@@ -60,7 +60,11 @@ th,td{
 </style>
 </head>
 <body>
-
+<script>
+if(localStorage.getItem("isLoggedIn")!=="true"){
+    window.location.href="admin.html";
+}
+</script>
 <script>
 if(localStorage.getItem("isLoggedIn")!=="true"){
     window.location.href="admin.html";
