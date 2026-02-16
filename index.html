@@ -20,22 +20,47 @@ background:#f4f6f9;
 header{
 background:linear-gradient(135deg,#1e3a8a,#0f172a);
 color:white;
-padding:25px 20px;
+padding:20px 30px;
+position:relative;
 text-align:center;
 }
 
+/* LOGO LEFT */
+.logo{
+position:absolute;
+left:20px;
+top:50%;
+transform:translateY(-50%);
+}
+
+.logo img{
+height:60px;
+}
+
+/* CONTACT RIGHT */
+.contact{
+position:absolute;
+right:20px;
+top:50%;
+transform:translateY(-50%);
+font-weight:bold;
+}
+
+/* CENTER TEXT */
 header h1{
-font-size:30px;
+font-size:28px;
 }
 
 .state{
 margin-top:5px;
+font-size:15px;
 }
 
 .tagline{
 margin-top:6px;
 font-weight:bold;
 color:gold;
+font-size:16px;
 }
 
 /* NAVIGATION */
@@ -126,9 +151,19 @@ margin-top:40px;
 <body>
 
 <header>
+
+<div class="logo">
+<img src="logo.png" alt="Logo">
+</div>
+
 <h1>Patel Computer Class</h1>
 <p class="state">Begusarai, Bihar</p>
 <p class="tagline">Learn Today – Lead Tomorrow</p>
+
+<div class="contact">
+📞 8789630580
+</div>
+
 </header>
 
 <nav>
@@ -154,7 +189,7 @@ We prepare students for a successful digital future.
 <div class="card">
 <h3>ADCA</h3>
 <p>Duration: 12 Months</p>
-<p><strong>₹8,000</strong></p>
+<p><strong>₹9,000</strong></p>
 </div>
 
 <div class="card">
@@ -174,6 +209,7 @@ We prepare students for a successful digital future.
 <p>Duration: 3 Months</p>
 <p><strong>₹3,000</strong></p>
 </div>
+
 </div>
 
 <!-- ADMISSION -->
@@ -203,22 +239,17 @@ We prepare students for a successful digital future.
 <script>
 function openTab(evt, tabName){
 
-// Hide all content
 var tabcontent=document.getElementsByClassName("tabcontent");
 for(var i=0;i<tabcontent.length;i++){
 tabcontent[i].classList.remove("active");
 }
 
-// Remove active button
 var tablinks=document.getElementsByClassName("tablink");
 for(var i=0;i<tablinks.length;i++){
 tablinks[i].classList.remove("active");
 }
 
-// Show selected tab
 document.getElementById(tabName).classList.add("active");
-
-// Highlight button
 evt.currentTarget.classList.add("active");
 }
 </script>
