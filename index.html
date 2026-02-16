@@ -49,21 +49,100 @@ display:block;
 footer{
 background:#111;
 color:white;
-text-align:center;
-padding:20px;
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patel Computer Class</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
 }
 
+/* HEADER */
+header{
+    background:#1e3a8a;
+    color:white;
+    padding:20px 30px;
+    position:relative;
+    text-align:center;
+}
+
+.logo{
+    position:absolute;
+    left:30px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.logo img{
+    height:60px;
+}
+
+.contact{
+    position:absolute;
+    right:30px;
+    top:50%;
+    transform:translateY(-50%);
+    font-weight:bold;
+}
+
+/* NAVIGATION */
+nav{
+    background:black;
+    text-align:center;
+}
+
+nav button{
+    background:none;
+    border:none;
+    color:white;
+    padding:15px 20px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+nav button:hover{
+    background:#2563eb;
+}
+
+/* TAB CONTENT */
+.tabcontent{
+    display:none;
+    padding:40px;
+}
+
+.active{
+    display:block;
+}
+
+/* FORM */
 input,select,textarea{
-padding:10px;
-width:100%;
-margin:8px 0;
+    width:100%;
+    padding:10px;
+    margin:8px 0;
 }
 
 button.submit{
-background:#1e3a8a;
-color:white;
-border:none;
-padding:10px 15px;
+    background:#1e3a8a;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+button.submit:hover{
+    background:#2563eb;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
 </style>
 </head>
@@ -71,14 +150,18 @@ padding:10px 15px;
 <body>
 
 <header>
+
 <div class="logo">
 <img src="logo.png" alt="Logo">
 </div>
 
-<div>
-<h2>Patel Computer Class</h2>
-<p>📞 8789630580</p>
+<h1>Patel Computer Class</h1>
+<p>Learn Today – Lead Tomorrow</p>
+
+<div class="contact">
+📞 8789630580
 </div>
+
 </header>
 
 <nav>
@@ -88,20 +171,26 @@ padding:10px 15px;
 <button onclick="window.location.href='admin.html'">Admin Login</button>
 </nav>
 
+<!-- HOME -->
 <div id="home" class="tabcontent active">
 <h2>Welcome To Patel Computer Class</h2>
-<p>Best Computer Training Institute in Begusarai, Bihar.</p>
+<p>
+Patel Computer Class is one of the leading computer training institutes in Begusarai, Bihar. 
+We provide professional and practical computer education to help students build a successful career in the digital world.
+</p>
 </div>
 
+<!-- COURSES -->
 <div id="courses" class="tabcontent">
 <h2>Courses & Fees</h2>
-<p>ADCA - ₹8,000</p>
-<p>DCA - ₹4,000</p>
+<p>ADCA - ₹12,000</p>
+<p>DCA - ₹6,000</p>
 <p>KYP - ₹1,000</p>
-<p>Tally - ₹3,000</p>
+<p>Tally with GST - ₹4,000</p>
 <p>Teleshop - ₹2,500</p>
 </div>
 
+<!-- ADMISSION -->
 <div id="admission" class="tabcontent">
 <h2>Student Admission Form</h2>
 
@@ -113,7 +202,7 @@ padding:10px 15px;
 <option>ADCA</option>
 <option>DCA</option>
 <option>KYP</option>
-<option>Tally</option>
+<option>Tally with GST</option>
 <option>Teleshop</option>
 </select>
 
@@ -128,40 +217,40 @@ padding:10px 15px;
 
 <script>
 function openTab(tabName){
-var x=document.getElementsByClassName("tabcontent");
-for(var i=0;i<x.length;i++){
-x[i].style.display="none";
-}
-document.getElementById(tabName).style.display="block";
+    var x=document.getElementsByClassName("tabcontent");
+    for(var i=0;i<x.length;i++){
+        x[i].style.display="none";
+    }
+    document.getElementById(tabName).style.display="block";
 }
 
 function saveAdmission(){
-var name=document.getElementById("studentName").value;
-var mobile=document.getElementById("mobile").value;
-var course=document.getElementById("course").value;
-var address=document.getElementById("address").value;
+    var name=document.getElementById("studentName").value;
+    var mobile=document.getElementById("mobile").value;
+    var course=document.getElementById("course").value;
+    var address=document.getElementById("address").value;
 
-if(name===""||mobile===""||course===""||address===""){
-alert("Please fill all details");
-return;
-}
+    if(name===""||mobile===""||course===""||address===""){
+        alert("Please fill all details");
+        return;
+    }
 
-var students=JSON.parse(localStorage.getItem("students"))||[];
+    var students=JSON.parse(localStorage.getItem("students"))||[];
 
-students.push({
-name:name,
-mobile:mobile,
-course:course,
-address:address
-});
+    students.push({
+        name:name,
+        mobile:mobile,
+        course:course,
+        address:address
+    });
 
-localStorage.setItem("students",JSON.stringify(students));
+    localStorage.setItem("students",JSON.stringify(students));
 
-alert("Admission Submitted Successfully");
+    alert("Admission Submitted Successfully");
 
-document.getElementById("studentName").value="";
-document.getElementById("mobile").value="";
-document.getElementById("address").value="";
+    document.getElementById("studentName").value="";
+    document.getElementById("mobile").value="";
+    document.getElementById("address").value="";
 }
 </script>
 
