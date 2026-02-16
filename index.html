@@ -12,18 +12,33 @@ body{
 }
 
 /* HEADER */
-header{
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
     background:linear-gradient(to right,#0f172a,#1e3a8a);
     color:white;
-    padding:15px;
-    text-align:center;
 }
 
-header img{
+.logo img{
     height:60px;
 }
 
-/* NAV */
+.title{
+    text-align:center;
+}
+
+.title h1{
+    margin:0;
+}
+
+.contact{
+    text-align:right;
+    font-weight:bold;
+}
+
+/* NAVIGATION */
 nav{
     background:black;
     text-align:center;
@@ -42,7 +57,7 @@ nav a:hover{
     background:#0ea5e9;
 }
 
-/* SECTION */
+/* SECTIONS */
 section{
     display:none;
     padding:40px;
@@ -89,14 +104,14 @@ footer{
     margin-top:30px;
 }
 
-/* WhatsApp Floating Button */
+/* WhatsApp Button */
 .whatsapp{
     position:fixed;
     bottom:20px;
     right:20px;
     background:#25D366;
     color:white;
-    padding:12px 15px;
+    padding:12px 18px;
     border-radius:50px;
     text-decoration:none;
     font-weight:bold;
@@ -106,13 +121,26 @@ footer{
 
 <body>
 
-<header>
-<img src="logo.png" alt="Logo">
-<h1>Patel Computer Class</h1>
-<p>Learn Today – Lead Tomorrow</p>
-<p>📞 Contact: 8789630580</p>
+<!-- HEADER -->
+<header class="top-header">
+    
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <div class="title">
+        <h1>Patel Computer Class</h1>
+        <p>Learn Today – Lead Tomorrow</p>
+    </div>
+
+    <div class="contact">
+        📞 8789630580 <br>
+        📍 Begusarai, Bihar
+    </div>
+
 </header>
 
+<!-- NAVIGATION -->
 <nav>
 <a onclick="showTab('home')">Home</a>
 <a onclick="showTab('courses')">Courses</a>
@@ -123,7 +151,7 @@ footer{
 <!-- HOME -->
 <section id="home" class="active">
 <h2>Welcome To Patel Computer Class</h2>
-<p>Best Computer Training Institute in Begusarai, Bihar</p>
+<p>Best Computer Training Institute in Bihar.</p>
 </section>
 
 <!-- COURSES -->
@@ -187,12 +215,12 @@ Submit
 
 </section>
 
+<!-- FOOTER -->
 <footer>
 <p>© 2026 Patel Computer Class</p>
-<p>📍 Begusarai, Bihar</p>
 </footer>
 
-<!-- WhatsApp Button -->
+<!-- WhatsApp Floating Button -->
 <a class="whatsapp" href="https://wa.me/918789630580" target="_blank">
 WhatsApp
 </a>
@@ -206,43 +234,6 @@ function showTab(tabId){
     document.getElementById(tabId).classList.add("active");
 }
 </script>
-
-</body>
-</html><p>Duration: 3 Months</p>
-<p><strong>Fees: ₹4,000</strong></p>
-</div>
-
-<div class="card">
-<h3>Teleshop</h3>
-<p>Duration: 1 Month</p>
-<p><strong>Fees: ₹2,500</strong></p>
-</div>
-
-</div>
-
-<div id="admission" class="section">
-<h2>Admission Form</h2>
-
-<input type="text" placeholder="Student Name">
-<input type="text" placeholder="Father Name">
-
-<select>
-<option>Select Course</option>
-<option>ADCA</option>
-<option>DCA</option>
-<option>KYP</option>
-<option>Tally</option>
-<option>Teleshop</option>
-</select>
-
-<input type="text" placeholder="Mobile Number">
-<textarea placeholder="Address"></textarea>
-
-<button onclick="alert('Admission Submitted Successfully')">
-Submit
-</button>
-
-</div>
 
 </body>
 </html>
