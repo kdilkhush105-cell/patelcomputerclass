@@ -1,96 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Dashboard</title>
-
+<title>Admin Login</title>
 <style>
-body {
-    margin: 0;
+body{
     font-family: Arial;
+    background: linear-gradient(to right,#1e3a8a,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
-
-/* Sidebar */
-.sidebar {
-    width: 220px;
-    height: 100vh;
-    background: #1e3a8a;
-    color: white;
-    position: fixed;
-    padding-top: 20px;
+.login-box{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+    text-align:center;
 }
-
-.sidebar h2 {
-    text-align: center;
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
 }
-
-.sidebar a {
-    display: block;
-    padding: 12px;
-    color: white;
-    text-decoration: none;
-}
-
-.sidebar a:hover {
-    background: #2563eb;
-}
-
-/* Main Content */
-.main {
-    margin-left: 220px;
-    padding: 20px;
-}
-
-.card {
-    background: #f1f5f9;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
+button{
+    width:100%;
+    padding:10px;
+    background:#1e3a8a;
+    color:white;
+    border:none;
+    cursor:pointer;
 }
 </style>
-
 </head>
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar">
-    <h2>Admin Panel</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Students</a>
-    <a href="#">Courses</a>
-    <a href="admin.html">Logout</a>
+<div class="login-box">
+<h2>Admin Login</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="error" style="color:red;"></p>
 </div>
 
-<!-- Main Content -->
-<div class="main">
-    <h1>Dashboard</h1>
+<script>
+function login(){
+    var user=document.getElementById("username").value;
+    var pass=document.getElementById("password").value;
 
-    <div class="card">
-        <h3>Total Students</h3>
-        <p>120</p>
-    </div>
-
-    <div class="card">
-        <h3>Student Details</h3>
-        <table border="1" width="100%" cellpadding="8">
-            <tr>
-                <th>Name</th>
-                <th>Course</th>
-                <th>Contact</th>
-            </tr>
-            <tr>
-                <td>Rahul Kumar</td>
-                <td>DCA</td>
-                <td>9876543210</td>
-            </tr>
-            <tr>
-                <td>Pooja Singh</td>
-                <td>ADCA</td>
-                <td>9123456780</td>
-            </tr>
-        </table>
-    </div>
-
-</div>
+    if(user==="admin" && pass==="1234"){
+        localStorage.setItem("isLoggedIn","true");
+        window.location.href="dashboard.html";
+    }else{
+        document.getElementById("error").innerText="Invalid Login Details";
+    }
+}
+</script>
 
 </body>
 </html>
