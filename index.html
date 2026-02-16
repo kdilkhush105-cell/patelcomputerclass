@@ -35,13 +35,8 @@ nav a:hover{
     background:#0ea5e9;
 }
 
-section{
-    display:none;
+.section{
     padding:40px;
-}
-
-.active{
-    display:block;
 }
 
 .card{
@@ -80,30 +75,28 @@ button:hover{
 </header>
 
 <nav>
-<a href="#" onclick="showSection('home')">Home</a>
-<a href="#" onclick="showSection('courses')">Courses</a>
-<a href="#" onclick="showSection('admission')">Admission</a>
+<a href="#home">Home</a>
+<a href="#courses">Courses</a>
+<a href="#admission">Admission</a>
 <a href="admin.html">Admin Login</a>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="active">
+<div id="home" class="section">
 <h2>Welcome To Patel Computer Class</h2>
 <p>Best Computer Training Institute</p>
-</section>
+</div>
 
-<!-- COURSES -->
-<section id="courses">
+<div id="courses" class="section">
 <h2>Our Courses & Fees</h2>
 
 <div class="card">
-<h3>ADCA (Advanced Diploma in Computer Application)</h3>
+<h3>ADCA</h3>
 <p>Duration: 12 Months</p>
 <p><strong>Fees: ₹12,000</strong></p>
 </div>
 
 <div class="card">
-<h3>DCA (Diploma in Computer Application)</h3>
+<h3>DCA</h3>
 <p>Duration: 6 Months</p>
 <p><strong>Fees: ₹6,000</strong></p>
 </div>
@@ -126,17 +119,16 @@ button:hover{
 <p><strong>Fees: ₹2,500</strong></p>
 </div>
 
-</section>
+</div>
 
-<!-- ADMISSION -->
-<section id="admission">
+<div id="admission" class="section">
 <h2>Admission Form</h2>
 
-<input type="text" placeholder="Student Name" required>
-<input type="text" placeholder="Father Name" required>
+<input type="text" placeholder="Student Name">
+<input type="text" placeholder="Father Name">
 
-<select required>
-<option value="">Select Course</option>
+<select>
+<option>Select Course</option>
 <option>ADCA</option>
 <option>DCA</option>
 <option>KYP</option>
@@ -144,21 +136,14 @@ button:hover{
 <option>Teleshop</option>
 </select>
 
-<input type="text" placeholder="Mobile Number" required>
+<input type="text" placeholder="Mobile Number">
 <textarea placeholder="Address"></textarea>
 
-<button onclick="alert('Admission Submitted Successfully')">Submit</button>
+<button onclick="alert('Admission Submitted Successfully')">
+Submit
+</button>
 
-</section>
-
-<script>
-function showSection(id){
-    document.querySelectorAll("section").forEach(function(sec){
-        sec.classList.remove("active");
-    });
-    document.getElementById(id).classList.add("active");
-}
-</script>
+</div>
 
 </body>
 </html>
