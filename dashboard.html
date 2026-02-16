@@ -2,66 +2,155 @@
 <html>
 <head>
 <title>Admin Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{
-    margin:0;
-    font-family:Arial;
-}
-header{
-    background:#203a43;
+body{margin:0;font-family:Arial;background:#f1f5f9;}
+.sidebar{
+    width:220px;
+    height:100vh;
+    background:#1e3a8a;
     color:white;
-    padding:15px;
-    text-align:center;
+    position:fixed;
+    padding-top:20px;
 }
-.container{
+.sidebar h2{text-align:center;}
+.sidebar a{
+    display:block;
+    padding:12px;
+    color:white;
+    text-decoration:none;
+}
+.sidebar a:hover{background:#2563eb;}
+
+.main{
+    margin-left:220px;
     padding:20px;
 }
+
+.card{
+    background:white;
+    padding:15px;
+    margin-bottom:20px;
+    border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+input{
+    padding:8px;
+    margin:5px;
+}
+
 button{
-    padding:8px 15px;
-    border:none;
-    background:red;
+    padding:8px 12px;
+    background:#1e3a8a;
     color:white;
-    border-radius:5px;
+    border:none;
     cursor:pointer;
 }
-.card{
-    background:#f4f4f4;
-    padding:20px;
-    margin:15px 0;
-    border-radius:10px;
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:center;
 }
 </style>
 </head>
 <body>
 
-<header>
-    <h2>Admin Dashboard</h2>
-    <button onclick="logout()">Logout</button>
-</header>
+<script>
+if(localStorage.getItem("isLoggedIn")!=="true"){
+    window.location.href="admin.html";
+}
+</script>
 
-<div class="container">
-    <div class="card">
-        <h3>Welcome Admin 👋</h3>
-        <p>This is your control panel.</p>
-    </div>
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="#">Dashboard</a>
+    <a href="#" onclick="showStudents()">Students</a>
+    <a href="#" onclick="logout()">Logout</a>
+</div>
 
-    <div class="card">
-        <h3>Total Admissions</h3>
-        <p>Here you can manage student data.</p>
-    </div>
+<div class="main">
+
+<h1>Dashboard</h1>
+
+<div class="card">
+<h3>Add Student</h3>
+<input type="text" id="name" placeholder="Student Name">
+<input type="text" id="course" placeholder="Course">
+<input type="text" id="contact" placeholder="Contact">
+<button onclick="addStudent()">Add</button>
+</div>
+
+<div class="card">
+<h3>Student List</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Course</th>
+<th>Contact</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="studentTable"></tbody>
+</table>
+</div>
+
 </div>
 
 <script>
-// अगर login नहीं किया तो dashboard open नहीं होगा
-if(localStorage.getItem("adminLogin") !== "true"){
-    window.location.href="admin.html";
+function loadStudents(){
+    var students=JSON.parse(localStorage.getItem("students"))||[];
+    var table="";
+    students.forEach(function(s,index){
+        table+=`<tr>
+        <td>${s.name}</td>
+        <td>${s.course}</td>
+        <td>${s.contact}</td>
+        <td><button onclick="deleteStudent(${index})">Delete</button></td>
+        </tr>`;
+    });
+    document.getElementById("studentTable").innerHTML=table;
+}
+
+function addStudent(){
+    var name=document.getElementById("name").value;
+    var course=document.getElementById("course").value;
+    var contact=document.getElementById("contact").value;
+
+    if(name===""||course===""||contact===""){
+        alert("Fill all fields");
+        return;
+    }
+
+    var students=JSON.parse(localStorage.getItem("students"))||[];
+    students.push({name,course,contact});
+    localStorage.setItem("students",JSON.stringify(students));
+    loadStudents();
+
+    document.getElementById("name").value="";
+    document.getElementById("course").value="";
+    document.getElementById("contact").value="";
+}
+
+function deleteStudent(index){
+    var students=JSON.parse(localStorage.getItem("students"))||[];
+    students.splice(index,1);
+    localStorage.setItem("students",JSON.stringify(students));
+    loadStudents();
 }
 
 function logout(){
-    localStorage.removeItem("adminLogin");
+    localStorage.removeItem("isLoggedIn");
     window.location.href="admin.html";
 }
+
+loadStudents();
 </script>
 
 </body>
