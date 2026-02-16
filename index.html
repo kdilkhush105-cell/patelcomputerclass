@@ -9,54 +9,33 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#f1f5f9;
+background:#f4f6f9;
 }
 
 /* HEADER */
 header{
 background:linear-gradient(135deg,#1e3a8a,#0f172a);
 color:white;
-padding:20px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-}
-
-.logo img{
-height:60px;
-border-radius:8px;
-}
-
-.center-header{
+padding:25px 20px;
 text-align:center;
-flex:1;
 }
 
-.center-header h1{
-font-size:28px;
+header h1{
+font-size:30px;
 }
 
-.center-header .state{
-font-size:14px;
+.state{
 margin-top:5px;
 }
 
-.center-header .tagline{
+.tagline{
 margin-top:6px;
 font-weight:bold;
-background:linear-gradient(to right,gold,orange);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.contact{
-font-size:14px;
-text-align:right;
+color:gold;
 }
 
 /* NAVIGATION */
@@ -80,77 +59,38 @@ nav button:hover{
 background:#2563eb;
 }
 
-/* HERO SECTION */
-.hero{
-background:linear-gradient(to right,#2563eb,#1e40af);
-color:white;
-padding:60px 20px;
-text-align:center;
+nav button.active{
+background:#2563eb;
 }
 
-.hero h2{
-font-size:32px;
-}
-
-.hero p{
-margin-top:15px;
-font-size:18px;
-}
-
-.hero button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-background:gold;
-color:black;
-font-weight:bold;
-border-radius:30px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.hero button:hover{
-background:orange;
-}
-
-/* SECTION */
-.section{
+/* TAB CONTENT */
+.tabcontent{
+display:none;
 padding:50px 20px;
-max-width:1100px;
+max-width:1000px;
 margin:auto;
+animation:fade 0.4s ease-in-out;
 }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
 }
 
+.tabcontent.active{
+display:block;
+}
+
+/* CARD */
 .card{
 background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+padding:20px;
+margin:15px 0;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.card:hover{
-transform:translateY(-8px);
-}
-
-.card h3{
-margin-bottom:10px;
-color:#1e3a8a;
-}
-
-/* ADMISSION FORM */
-form{
-background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
+/* FORM */
 input,select,textarea{
 width:100%;
 padding:12px;
@@ -159,17 +99,16 @@ border-radius:6px;
 border:1px solid #ccc;
 }
 
-form button{
+button.submit{
 background:#1e3a8a;
 color:white;
-padding:12px 20px;
 border:none;
+padding:12px 20px;
 border-radius:6px;
 cursor:pointer;
-transition:0.3s;
 }
 
-form button:hover{
+button.submit:hover{
 background:#2563eb;
 }
 
@@ -181,69 +120,47 @@ text-align:center;
 padding:20px;
 margin-top:40px;
 }
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:12px 18px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
-}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">
-<img src="logo.png" alt="Logo">
-</div>
-
-<div class="center-header">
 <h1>Patel Computer Class</h1>
 <p class="state">Begusarai, Bihar</p>
 <p class="tagline">Learn Today – Lead Tomorrow</p>
-</div>
-
-<div class="contact">
-📞 8789630580<br>
-📧 info@patelcomputerclass.com
-</div>
 </header>
 
 <nav>
-<button onclick="scrollToSection('home')">Home</button>
-<button onclick="scrollToSection('courses')">Courses</button>
-<button onclick="scrollToSection('admission')">Admission</button>
+<button class="tablink active" onclick="openTab(event,'home')">Home</button>
+<button class="tablink" onclick="openTab(event,'courses')">Courses</button>
+<button class="tablink" onclick="openTab(event,'admission')">Admission</button>
 <button onclick="window.location.href='admin.html'">Admin Login</button>
 </nav>
 
-<section class="hero" id="home">
-<h2>Build Your Digital Future With Us</h2>
-<p>Professional Computer Training with Practical Knowledge</p>
-<button onclick="scrollToSection('admission')">Apply Now</button>
-</section>
+<!-- HOME -->
+<div id="home" class="tabcontent active">
+<h2>Welcome To Patel Computer Class</h2>
+<p style="margin-top:15px; line-height:1.7;">
+Patel Computer Class provides professional computer education with practical knowledge.
+We prepare students for a successful digital future.
+</p>
+</div>
 
-<section class="section" id="courses">
-<h2 style="text-align:center;margin-bottom:30px;">Our Courses</h2>
+<!-- COURSES -->
+<div id="courses" class="tabcontent">
+<h2>Our Courses</h2>
 
-<div class="cards">
 <div class="card">
 <h3>ADCA</h3>
 <p>Duration: 12 Months</p>
-<p><strong>₹8,000</strong></p>
+<p><strong>₹12,000</strong></p>
 </div>
 
 <div class="card">
 <h3>DCA</h3>
 <p>Duration: 6 Months</p>
-<p><strong>₹4,000</strong></p>
+<p><strong>₹6,000</strong></p>
 </div>
 
 <div class="card">
@@ -255,47 +172,54 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 <div class="card">
 <h3>Tally with GST</h3>
 <p>Duration: 3 Months</p>
-<p><strong>₹3,000</strong></p>
+<p><strong>₹4,000</strong></p>
 </div>
 </div>
-</section>
 
-<section class="section" id="admission">
-<h2 style="text-align:center;margin-bottom:20px;">Admission Form</h2>
+<!-- ADMISSION -->
+<div id="admission" class="tabcontent">
+<h2>Admission Form</h2>
 
-<form onsubmit="saveAdmission(); return false;">
-<input type="text" id="studentName" placeholder="Student Name" required>
-<input type="text" id="mobile" placeholder="Mobile Number" required>
+<input type="text" placeholder="Student Name">
+<input type="text" placeholder="Mobile Number">
 
-<select id="course" required>
-<option value="">Select Course</option>
+<select>
+<option>Select Course</option>
 <option>ADCA</option>
 <option>DCA</option>
 <option>KYP</option>
-<option>Tally with GST</option>
+<option>Tally</option>
 </select>
 
-<textarea id="address" placeholder="Address" required></textarea>
+<textarea placeholder="Address"></textarea>
 
-<button type="submit">Submit Admission</button>
-</form>
-</section>
+<button class="submit">Submit Admission</button>
+</div>
 
 <footer>
 © 2026 Patel Computer Class | All Rights Reserved
 </footer>
 
-<a class="whatsapp" href="https://wa.me/918789630580" target="_blank">
-WhatsApp
-</a>
-
 <script>
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
+function openTab(evt, tabName){
+
+// Hide all content
+var tabcontent=document.getElementsByClassName("tabcontent");
+for(var i=0;i<tabcontent.length;i++){
+tabcontent[i].classList.remove("active");
 }
 
-function saveAdmission(){
-alert("Admission Submitted Successfully");
+// Remove active button
+var tablinks=document.getElementsByClassName("tablink");
+for(var i=0;i<tablinks.length;i++){
+tablinks[i].classList.remove("active");
+}
+
+// Show selected tab
+document.getElementById(tabName).classList.add("active");
+
+// Highlight button
+evt.currentTarget.classList.add("active");
 }
 </script>
 
