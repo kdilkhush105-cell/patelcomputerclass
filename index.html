@@ -5,27 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI;}
 
-body{
-background:#f4f6f9;
-}
+body{background:#f4f6f9;}
 
-/* HEADER */
 header{
 background:linear-gradient(135deg,#1e3a8a,#0f172a);
 color:white;
-padding:20px 30px;
-position:relative;
+padding:20px;
 text-align:center;
+position:relative;
 }
 
-/* LOGO LEFT */
 .logo{
 position:absolute;
 left:20px;
@@ -33,11 +24,8 @@ top:50%;
 transform:translateY(-50%);
 }
 
-.logo img{
-height:60px;
-}
+.logo img{height:60px;}
 
-/* CONTACT RIGHT */
 .contact{
 position:absolute;
 right:20px;
@@ -46,24 +34,8 @@ transform:translateY(-50%);
 font-weight:bold;
 }
 
-/* CENTER TEXT */
-header h1{
-font-size:28px;
-}
+.tagline{color:gold;font-weight:bold;margin-top:5px;}
 
-.state{
-margin-top:5px;
-font-size:15px;
-}
-
-.tagline{
-margin-top:6px;
-font-weight:bold;
-color:gold;
-font-size:16px;
-}
-
-/* NAVIGATION */
 nav{
 background:#111827;
 display:flex;
@@ -75,75 +47,54 @@ background:none;
 border:none;
 color:white;
 padding:15px 25px;
-font-size:16px;
 cursor:pointer;
-transition:0.3s;
+font-size:16px;
 }
 
-nav button:hover{
-background:#2563eb;
-}
+nav button:hover{background:#2563eb;}
 
-nav button.active{
-background:#2563eb;
-}
-
-/* TAB CONTENT */
 .tabcontent{
 display:none;
-padding:50px 20px;
-max-width:1000px;
+padding:40px;
+max-width:900px;
 margin:auto;
-animation:fade 0.4s ease-in-out;
 }
 
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
+.tabcontent.active{display:block;}
 
-.tabcontent.active{
-display:block;
-}
-
-/* CARD */
-.card{
-background:white;
-padding:20px;
-margin:15px 0;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* FORM */
-input,select,textarea{
+input,select{
 width:100%;
-padding:12px;
+padding:10px;
 margin:10px 0;
-border-radius:6px;
 border:1px solid #ccc;
+border-radius:5px;
 }
 
 button.submit{
 background:#1e3a8a;
 color:white;
+padding:10px;
 border:none;
-padding:12px 20px;
-border-radius:6px;
+border-radius:5px;
 cursor:pointer;
 }
 
-button.submit:hover{
-background:#2563eb;
+button.submit:hover{background:#2563eb;}
+
+.card{
+background:white;
+padding:15px;
+margin:10px 0;
+border-radius:8px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
 }
 
-/* FOOTER */
 footer{
 background:#0f172a;
 color:white;
 text-align:center;
-padding:20px;
-margin-top:40px;
+padding:15px;
+margin-top:30px;
 }
 </style>
 </head>
@@ -151,74 +102,44 @@ margin-top:40px;
 <body>
 
 <header>
-
 <div class="logo">
-<img src="logo.png" alt="Logo">
+<img src="logo.png">
 </div>
 
 <h1>Patel Computer Class</h1>
-<p class="state">Begusarai, Bihar</p>
+<p>Begusarai, Bihar</p>
 <p class="tagline">Learn Today – Lead Tomorrow</p>
 
-<div class="contact">
-📞 8789630580
-</div>
-
+<div class="contact">📞 8789630580</div>
 </header>
 
 <nav>
-<button class="tablink active" onclick="openTab(event,'home')">Home</button>
-<button class="tablink" onclick="openTab(event,'courses')">Courses</button>
-<button class="tablink" onclick="openTab(event,'admission')">Admission</button>
-<button onclick="window.location.href='admin.html'">Admin Login</button>
+<button onclick="openTab('home')">Home</button>
+<button onclick="openTab('courses')">Courses</button>
+<button onclick="openTab('admission')">Admission</button>
+<button onclick="openTab('certificate')">Certificate</button>
+<button onclick="window.location.href='admin.html'">Admin</button>
 </nav>
 
-<!-- HOME -->
 <div id="home" class="tabcontent active">
-<h2>Welcome To Patel Computer Class</h2>
-<p style="margin-top:15px; line-height:1.7;">
-Patel Computer Class provides professional computer education with practical knowledge.
-We prepare students for a successful digital future.
-</p>
+<h2>Welcome</h2>
+<p>Patel Computer Class provides quality computer education for a bright digital future.</p>
 </div>
 
-<!-- COURSES -->
 <div id="courses" class="tabcontent">
-<h2>Our Courses</h2>
+<h2>Courses</h2>
 
-<div class="card">
-<h3>ADCA</h3>
-<p>Duration: 12 Months</p>
-<p><strong>₹9,000</strong></p>
-</div>
-
-<div class="card">
-<h3>DCA</h3>
-<p>Duration: 6 Months</p>
-<p><strong>₹4,000</strong></p>
-</div>
-
-<div class="card">
-<h3>KYP</h3>
-<p>Duration: 3 Months</p>
-<p><strong>₹1,000</strong></p>
-</div>
-
-<div class="card">
-<h3>Tally with GST</h3>
-<p>Duration: 3 Months</p>
-<p><strong>₹3,000</strong></p>
-</div>
+<div class="card">ADCA – ₹12000</div>
+<div class="card">DCA – ₹6000</div>
+<div class="card">KYP – ₹1000</div>
+<div class="card">Tally – ₹4000</div>
 
 </div>
 
-<!-- ADMISSION -->
 <div id="admission" class="tabcontent">
 <h2>Admission Form</h2>
-
 <input type="text" placeholder="Student Name">
-<input type="text" placeholder="Mobile Number">
-
+<input type="text" placeholder="Mobile">
 <select>
 <option>Select Course</option>
 <option>ADCA</option>
@@ -226,10 +147,28 @@ We prepare students for a successful digital future.
 <option>KYP</option>
 <option>Tally</option>
 </select>
+<button class="submit">Submit</button>
+</div>
 
-<textarea placeholder="Address"></textarea>
+<div id="certificate" class="tabcontent">
+<h2>Certificate Apply</h2>
 
-<button class="submit">Submit Admission</button>
+<input type="text" id="name" placeholder="Student Name">
+<input type="text" id="mobile" placeholder="Mobile Number">
+
+<select id="course">
+<option>Select Certificate</option>
+<option>ADCA</option>
+<option>DCA</option>
+<option>KYP</option>
+<option>Tally</option>
+</select>
+
+<input type="text" id="rollcode" placeholder="Roll Code">
+<input type="text" id="rollno" placeholder="Roll Number">
+<input type="text" id="year" placeholder="Passing Year">
+
+<button class="submit" onclick="submitData()">Submit</button>
 </div>
 
 <footer>
@@ -237,20 +176,40 @@ We prepare students for a successful digital future.
 </footer>
 
 <script>
-function openTab(evt, tabName){
-
-var tabcontent=document.getElementsByClassName("tabcontent");
-for(var i=0;i<tabcontent.length;i++){
-tabcontent[i].classList.remove("active");
+function openTab(tab){
+document.querySelectorAll('.tabcontent').forEach(el=>el.classList.remove('active'));
+document.getElementById(tab).classList.add('active');
 }
+</script>
 
-var tablinks=document.getElementsByClassName("tablink");
-for(var i=0;i<tablinks.length;i++){
-tablinks[i].classList.remove("active");
-}
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-document.getElementById(tabName).classList.add("active");
-evt.currentTarget.classList.add("active");
+const firebaseConfig = {
+apiKey: "YOUR_API_KEY",
+authDomain: "YOUR_PROJECT.firebaseapp.com",
+projectId: "YOUR_PROJECT_ID",
+storageBucket: "YOUR_PROJECT.appspot.com",
+messagingSenderId: "XXXX",
+appId: "XXXX"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.submitData = async function(){
+await addDoc(collection(db, "certificates"), {
+name:document.getElementById("name").value,
+mobile:document.getElementById("mobile").value,
+course:document.getElementById("course").value,
+rollcode:document.getElementById("rollcode").value,
+rollno:document.getElementById("rollno").value,
+year:document.getElementById("year").value,
+date:new Date()
+});
+alert("Application Submitted");
 }
 </script>
 
