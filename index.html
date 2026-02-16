@@ -11,13 +11,19 @@ body{
     background:#f4f4f4;
 }
 
+/* HEADER */
 header{
     background:linear-gradient(to right,#0f172a,#1e3a8a);
     color:white;
-    padding:30px;
+    padding:15px;
     text-align:center;
 }
 
+header img{
+    height:60px;
+}
+
+/* NAV */
 nav{
     background:black;
     text-align:center;
@@ -29,16 +35,24 @@ nav a{
     display:inline-block;
     text-decoration:none;
     font-weight:bold;
+    cursor:pointer;
 }
 
 nav a:hover{
     background:#0ea5e9;
 }
 
-.section{
+/* SECTION */
+section{
+    display:none;
     padding:40px;
 }
 
+section.active{
+    display:block;
+}
+
+/* CARD */
 .card{
     border:1px solid #ccc;
     padding:15px;
@@ -47,6 +61,7 @@ nav a:hover{
     background:white;
 }
 
+/* FORM */
 input, select, textarea{
     width:100%;
     padding:10px;
@@ -64,29 +79,55 @@ button{
 button:hover{
     background:#0ea5e9;
 }
-</style>
 
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:12px 15px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
 </head>
+
 <body>
 
 <header>
+<img src="logo.png" alt="Logo">
 <h1>Patel Computer Class</h1>
 <p>Learn Today – Lead Tomorrow</p>
+<p>📞 Contact: 8789630580</p>
 </header>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#courses">Courses</a>
-<a href="#admission">Admission</a>
+<a onclick="showTab('home')">Home</a>
+<a onclick="showTab('courses')">Courses</a>
+<a onclick="showTab('admission')">Admission</a>
 <a href="admin.html">Admin Login</a>
 </nav>
 
-<div id="home" class="section">
+<!-- HOME -->
+<section id="home" class="active">
 <h2>Welcome To Patel Computer Class</h2>
-<p>Best Computer Training Institute</p>
-</div>
+<p>Best Computer Training Institute in Begusarai, Bihar</p>
+</section>
 
-<div id="courses" class="section">
+<!-- COURSES -->
+<section id="courses">
 <h2>Our Courses & Fees</h2>
 
 <div class="card">
@@ -110,6 +151,64 @@ button:hover{
 <div class="card">
 <h3>Tally with GST</h3>
 <p>Duration: 3 Months</p>
+<p><strong>Fees: ₹4,000</strong></p>
+</div>
+
+<div class="card">
+<h3>Teleshop</h3>
+<p>Duration: 1 Month</p>
+<p><strong>Fees: ₹2,500</strong></p>
+</div>
+
+</section>
+
+<!-- ADMISSION -->
+<section id="admission">
+<h2>Admission Form</h2>
+
+<input type="text" placeholder="Student Name">
+<input type="text" placeholder="Father Name">
+
+<select>
+<option>Select Course</option>
+<option>ADCA</option>
+<option>DCA</option>
+<option>KYP</option>
+<option>Tally</option>
+<option>Teleshop</option>
+</select>
+
+<input type="text" placeholder="Mobile Number">
+<textarea placeholder="Address"></textarea>
+
+<button onclick="alert('Admission Submitted Successfully')">
+Submit
+</button>
+
+</section>
+
+<footer>
+<p>© 2026 Patel Computer Class</p>
+<p>📍 Begusarai, Bihar</p>
+</footer>
+
+<!-- WhatsApp Button -->
+<a class="whatsapp" href="https://wa.me/918789630580" target="_blank">
+WhatsApp
+</a>
+
+<script>
+function showTab(tabId){
+    var sections = document.querySelectorAll("section");
+    sections.forEach(function(section){
+        section.classList.remove("active");
+    });
+    document.getElementById(tabId).classList.add("active");
+}
+</script>
+
+</body>
+</html><p>Duration: 3 Months</p>
 <p><strong>Fees: ₹4,000</strong></p>
 </div>
 
