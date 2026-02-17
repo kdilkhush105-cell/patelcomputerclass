@@ -1,39 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel - Patel Computer Class</title>
+<title>Admin Panel</title>
 <style>
 body{font-family:'Segoe UI';background:#f4f6f9;margin:0;padding:0;}
 header{background:#1e3a8a;color:white;padding:20px;text-align:center;}
 .card{background:white;margin:10px auto;padding:15px;max-width:900px;border-radius:8px;box-shadow:0 3px 8px rgba(0,0,0,0.1);}
-button.logout{background:red;color:white;padding:5px 10px;border:none;border-radius:5px;cursor:pointer;margin-top:10px;}
-button.logout:hover{background:#ff4d4d;}
 </style>
 </head>
 <body>
 
-<header>
-<h1>Admin Panel - Certificate Applications</h1>
-<button class="logout" onclick="logout()">Logout</button>
-</header>
-
+<header><h1>Admin Panel - Certificate Applications</h1></header>
 <div id="data"></div>
 
 <script>
-// Check if admin is logged in
-if(localStorage.getItem("isAdmin")!=="true"){
-    alert("Please login first!");
-    window.location.href="admin-login.html";
-}
-
-// Logout function
-function logout(){
-    localStorage.removeItem("isAdmin");
-    window.location.href="admin-login.html";
-}
-
-// Load Certificates
 function loadCertificates(){
+    // Important: Must use same key as form -> "certificates"
     let data = JSON.parse(localStorage.getItem("certificates")) || [];
     let output="";
     data.forEach(s=>{
@@ -51,6 +33,7 @@ function loadCertificates(){
     document.getElementById("data").innerHTML = output;
 }
 
+// Load certificates when admin.html opens
 loadCertificates();
 </script>
 
