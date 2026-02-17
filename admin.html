@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
+<title>Admin Panel - Patel Computer Class</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body{font-family:'Segoe UI';background:#f4f6f9;margin:0;padding:0;}
 header{background:#1e3a8a;color:white;padding:20px;text-align:center;}
@@ -15,25 +16,25 @@ header{background:#1e3a8a;color:white;padding:20px;text-align:center;}
 
 <script>
 function loadCertificates(){
-    // Important: Must use same key as form -> "certificates"
-    let data = JSON.parse(localStorage.getItem("certificates")) || [];
-    let output="";
-    data.forEach(s=>{
-        output+=`
-        <div class="card">
-            <b>Name:</b> ${s.name}<br>
-            <b>Mobile:</b> ${s.mobile}<br>
-            <b>Certificate:</b> ${s.course}<br>
-            <b>Roll Code:</b> ${s.rollcode}<br>
-            <b>Roll No:</b> ${s.rollno}<br>
-            <b>Year:</b> ${s.year}<br>
-            <b>Date:</b> ${s.date}
-        </div>`;
-    });
-    document.getElementById("data").innerHTML = output;
+let data=JSON.parse(localStorage.getItem("certificates"))||[];
+let output="";
+data.forEach(s=>{
+output+=`
+<div class="card">
+<b>Name:</b> ${s.name}<br>
+<b>Mobile:</b> ${s.mobile}<br>
+<b>Certificate:</b> ${s.course}<br>
+<b>Roll Code:</b> ${s.rollcode}<br>
+<b>Roll No:</b> ${s.rollno}<br>
+<b>Year:</b> ${s.year}<br>
+<b>Date:</b> ${s.date}
+</div>
+`;
+});
+document.getElementById("data").innerHTML=output;
 }
 
-// Load certificates when admin.html opens
+// Load data on page load
 loadCertificates();
 </script>
 
