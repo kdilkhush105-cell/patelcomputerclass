@@ -1,18 +1,35 @@
-# BCA Study Hub — No Firebase Demo
+# BCA Student Hub
 
-This version removes Firebase entirely. It has a responsive study-library UI, demo student/admin sign-up and login, and PDF upload/download stored in the current browser's localStorage.
+A bilingual (English/Hindi) front-end learning project built with HTML, CSS and JavaScript.
 
-## Important limitations
-- This is **not secure authentication**. Anyone can choose “Admin (demo only)” or modify browser storage/code.
-- User accounts and PDFs stay only in the same browser/device. They are not shared with friends or other students and may be erased by clearing browser data.
-- Do not use real passwords or confidential files.
-- GitHub Pages is static hosting; it cannot securely protect admin actions or store uploads for all visitors by itself.
+## Pages
+- `index.html` — home page
+- `dashboard.html` — student dashboard, editable display name, self-set weekly goal and local quiz stats
+- `notes.html` — searchable BCA revision notes
+- `quiz.html` — five-question interactive quiz with feedback and locally saved scores
+- `admin.html` — add/delete notices, add learning resources and reset demo data
+- `style.css` — responsive design
+- `script.js` — interactions and browser-local storage
 
-## Upload to GitHub Pages
-1. Extract this ZIP.
-2. Upload/replace `index.html`, `style.css`, and `app.js` in the root of your repository.
-3. Remove old Firebase references from any page scripts you continue using. You can leave old Firebase rules/config files unused, or delete them from the repo if nothing else depends on them.
-4. Keep GitHub Pages set to `main` and `/(root)`.
+## Run locally
+1. Download or extract the project.
+2. Open `index.html` in a modern browser.
+3. For development, use VS Code with the Live Server extension if available.
 
-## If you need real secure admin/student accounts
-A server/backend or managed auth/database service is required. Without Firebase or another backend, this is only a local demo.
+## Publish with GitHub Pages
+1. Open your repository on GitHub.
+2. Upload/replace the project files in the repository root. Keep `logo.png` if you want to use it later.
+3. Click **Commit changes**.
+4. Go to **Settings → Pages**.
+5. Under **Build and deployment**, choose **Deploy from a branch**.
+6. Select branch `main` and folder `/ (root)`, then click **Save**.
+7. Wait for the deployment status, then open the published URL shown in Settings → Pages. It usually resembles `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/`.
+
+## Important demo limitations
+This project uses `localStorage`. Changes are saved only in the current browser on the current device; they are not shared with other students. The admin page has no authentication and is not secure. Do not store passwords, private student data, or real attendance records. A real multi-user app needs a backend/database and secure authentication.
+
+## Suggested next improvements
+- Add a real backend and database.
+- Add secure student/teacher accounts.
+- Add semester-wise resources and downloadable notes.
+- Add a proper logo and accessibility review.
